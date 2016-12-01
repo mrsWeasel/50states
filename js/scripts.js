@@ -12,15 +12,13 @@ var game = {
 
 	answers : [],
 
-	gameOver: false,
-
-	duration : 60000,
+	playing: true,
 
 	result : {},
 
 	validateStates : function(answer) {
 		answer = answer.toLowerCase();
-		if (! this.gameOver) {
+		if (this.playing) {
 			if ((this.states.indexOf(answer) != -1) && (this.answers.indexOf(answer) == -1)) {
 				return true;
 			} else {
@@ -33,25 +31,20 @@ var game = {
 	addState: function(answer) {
 		this.answers.push(answer);
 	},
-	tick : function(duration) {
-		duration = this.duration;
-		var that = this;
-
-		setTimeout(function() {that.gameOver = true; alert('Game over');}, duration);
-
-	},
 	getResult : function(seconds, states) {
 		this.result = {secondsRemaining: seconds, missingStates: states};
+	},
+	endGame : function() {
+		this.playing = false;
 	}
 }
-
-//game.tick();
 $(document).ready(function() {
-	var val, statesInput = $('#states-input');
+	var val, statesInput = $('#states-input'); 
 
 	// only respond to click event once
 	statesInput.on('click', function(e) {
-		game.tick();
+		gameLevel = $('#game-level').val();
+		tick(gameLevel);
 		$(this).off('click');
 	});
 
@@ -60,7 +53,28 @@ $(document).ready(function() {
 		if ( game.validateStates(val) ) {
 			game.addState(val);
 			$(this).val('');
-			$('#states').append('<li>' + val + '</li>');
+			$('#states').append('<li>' + val.toLowerCase() + '</li>');
 		}
 	});
+
 });
+
+	function tick(level) {
+		switch(level) {
+			case 'beginner':
+			duration = 600000;
+			break;
+			case 'advanced':
+			duration = 300000;
+			break;
+			case 'expert':
+			duration = 150000;
+			break;
+			default:
+			duration = 300000;
+			break;
+		}
+
+		setTimeout(function() {game.endGame(); $('#mask').css('visibility', 'visible');}, duration);
+
+	}

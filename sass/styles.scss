@@ -1,5 +1,20 @@
 @import "reset/normalize";
 
+// Bootstrap core variables and mixins
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+
+// Bootstrap core CSS
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+
+// Bootstrap utility classes
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+
+// Mixins
+@import "mixins/colors";
+
 *, *:after, *:before {
   box-sizing: border-box;
 }
@@ -9,5 +24,90 @@ html {
 }
 
 body {
-	
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: 1.6rem;
+	background: $green;
+	color: $white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+}
+
+h1 {
+	font-size: 4rem;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+h3 {
+	font-size: 2.6rem;
+}
+
+h4 {
+	font-size: 2.4rem;
+}
+
+h5 {
+	font-size: 2.2rem;
+}
+
+h6 {
+	font-size: 2rem;
+}
+
+.center {
+	text-align: center;
+}
+
+#main {
+	padding: 2em 0;
+}
+
+#game-level {
+	margin-bottom: 2em;
+}
+
+#states-input {
+	width: 100%;
+	height: 5rem;
+	border: none;
+	background: transparent;
+	color: $white;
+	border-bottom: 4px solid $dark-green;
+	font-size: 2rem;
+	&:focus {
+		outline: 0;
+	}
+}
+
+#states {
+	li {
+		display: inline-block;
+		height: 2em;
+		border-radius: 1em;
+		padding: 0.2em 0.8em;
+		margin: 0.3em;
+		background: $dark-green;
+	}
+}
+
+#mask {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	color: $dark-gray;
+	text-align: center;
+	visibility: hidden;
+	.callout {
+		background: $white;
+		padding: 2.5em;
+		margin-top: 3em;
+		box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	}
 }

@@ -1,18 +1,46 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
 	<title>50 States</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
+	<div id="mask">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="callout">
+						<h2>Game over!</h2>
+						<p class="result-text">Result goes here.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 class="center">50 States</h1>
+					<select id="game-level">
+						<option value="" disabled selected hidden>Choose Level...</option>
+						<option value="beginner">Beginner</option>
+						<option value="advanced">Advanced</option>
+						<option value="expert">Expert</option>
+					</select>
+					<form role="form">
+						<input id="states-input" type="text">
+					</form>
+				</div>
+				<div class="col-sm-12">
+					<ol id="states">
 
-	<form role="form">
-		<input id="states-input" type="text" placeholder="Add a state">
-	</form>
-
-	<ol id="states">
-
-	</ol>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
  	
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="js/scripts.js"></script>

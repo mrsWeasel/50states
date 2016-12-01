@@ -12,15 +12,13 @@ var game = {
 
 	answers : [],
 
-	gameOver: false,
-
-	duration : 60000,
+	playing: true,
 
 	result : {},
 
 	validateStates : function(answer) {
 		answer = answer.toLowerCase();
-		if (! this.gameOver) {
+		if (this.playing) {
 			if ((this.states.indexOf(answer) != -1) && (this.answers.indexOf(answer) == -1)) {
 				return true;
 			} else {
@@ -33,16 +31,10 @@ var game = {
 	addState: function(answer) {
 		this.answers.push(answer);
 	},
-	tick : function(duration) {
-		duration = this.duration;
-		var that = this;
-
-		setTimeout(function() {that.gameOver = true; alert('Game over');}, duration);
-
-	},
 	getResult : function(seconds, states) {
 		this.result = {secondsRemaining: seconds, missingStates: states};
+	},
+	endGame : function() {
+		this.playing = false;
 	}
 }
-
-//game.tick();
